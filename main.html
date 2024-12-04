@@ -1,16 +1,152 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-	<link rel="stylesheet" href="styles.css">
-</head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theme Slider</title>
+  <style>
+    /* Slider container style */
+    .slider-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin-top: 50px;
+      width: 80%;
+      height: 500px;
+      position: relative;
+    }
 
+    /* Left and right sections (description and image) */
+    .left-slide, .right-slide {
+      width: 50%;
+      text-align: center;
+      height: 100%;
+    }
+
+    .left-slide h1 {
+      font-size: 2em;
+      color: #333;
+    }
+
+    .left-slide p {
+      font-size: 1.2em;
+      color: #666;
+    }
+
+    /* Button styles */
+    .up-button, .down-button {
+      background-color: #333;
+      color: white;
+      padding: 10px 20px;
+      font-size: 1.2em;
+      border: none;
+      cursor: pointer;
+      margin: 10px;
+    }
+
+    .up-button:hover, .down-button:hover {
+      background-color: #555;
+    }
+
+    /* Slider image */
+    .right-slide img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    /* Initially hide all slides */
+    .slide {
+      display: none;
+    }
+
+    /* Show the current slide */
+    .active {
+      display: flex;
+    }
+  </style>
+</head>
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-</script>
+
+  <div class="slider-container">
+    <div class="slider-wrapper">
+      <!-- Slide 1 -->
+      <div class="slide active" id="slide-1">
+        <div class="left-slide">
+          <h1>Nature Flower</h1>
+          <p>All in pink.</p>
+        </div>
+        <div class="right-slide">
+          <img src="https://via.placeholder.com/400x300?text=Nature+Flower" alt="Nature Flower">
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="slide" id="slide-2">
+        <div class="left-slide">
+          <h1>Bluue Sky</h1>
+          <p>With its mountains.</p>
+        </div>
+        <div class="right-slide">
+          <img src="https://via.placeholder.com/400x300?text=Bluue+Sky" alt="Bluue Sky">
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="slide" id="slide-3">
+        <div class="left-slide">
+          <h1>Lonely Castle</h1>
+          <p>In the wilderness.</p>
+        </div>
+        <div class="right-slide">
+          <img src="https://via.placeholder.com/400x300?text=Lonely+Castle" alt="Lonely Castle">
+        </div>
+      </div>
+
+      <!-- Slide 4 -->
+      <div class="slide" id="slide-4">
+        <div class="left-slide">
+          <h1>Flying Eagle</h1>
+          <p>In the sunset.</p>
+        </div>
+        <div class="right-slide">
+          <img src="https://via.placeholder.com/400x300?text=Flying+Eagle" alt="Flying Eagle">
+        </div>
+      </div>
+    </div>
+
+    <!-- Buttons for navigation -->
+    <button class="up-button" onclick="moveSlide(-1)">Up</button>
+    <button class="down-button" onclick="moveSlide(1)">Down</button>
+  </div>
+
+  <script>
+    let currentSlide = 1;
+    const totalSlides = 4;
+
+    // Function to navigate through slides
+    function moveSlide(direction) {
+      // Remove active class from the current slide
+      document.getElementById(`slide-${currentSlide}`).classList.remove('active');
+
+      // Update current slide index based on direction
+      currentSlide += direction;
+
+      // Loop back to the first slide if at the last slide
+      if (currentSlide > totalSlides) {
+        currentSlide = 1;
+      }
+
+      // Loop back to the last slide if at the first slide
+      if (currentSlide < 1) {
+        currentSlide = totalSlides;
+      }
+
+      // Show the new active slide
+      document.getElementById(`slide-${currentSlide}`).classList.add('active');
+    }
+  </script>
 
 </body>
-
 </html>

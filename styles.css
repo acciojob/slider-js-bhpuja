@@ -1,1 +1,83 @@
-/*  your css code here. If applicable */
+/* General slider container style */
+.slider-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 50px;
+  width: 80%;
+  height: 500px;
+  position: relative;
+}
+
+/* Left and right sections (description and image) */
+.left-slide, .right-slide {
+  width: 50%;
+  text-align: center;
+  height: 100%;
+}
+
+.left-slide h1 {
+  font-size: 2em;
+  color: #333;
+}
+
+.left-slide p {
+  font-size: 1.2em;
+  color: #666;
+}
+
+/* Slider button styles */
+.up-button, .down-button {
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+  font-size: 1.2em;
+  border: none;
+  cursor: pointer;
+  margin: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.up-button:hover, .down-button:hover {
+  background-color: #555;
+}
+
+/* Slider image styling */
+.right-slide img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* Initially hide all slides */
+.slide {
+  display: none;
+}
+
+/* Show the current active slide */
+.active {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Responsiveness: Stack sections on smaller screens */
+@media (max-width: 768px) {
+  .slider-container {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .left-slide, .right-slide {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .up-button, .down-button {
+    font-size: 1em;
+    width: 100%;
+    padding: 10px;
+  }
+}
+
